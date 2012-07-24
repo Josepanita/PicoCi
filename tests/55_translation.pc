@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+real a;
+a = 42;
+imprimir("%.2f\n", a);
+
+caracter b = 'A';
+imprimir("%c\n", b);
+
+entero c = 12, d = 34;
+imprimir("%d, %d\n", c, d);
+
+int main() {
+	mientras(c != 0){
+		imprimir("%d", c);
+		scanf("%d", &d);
+		si(d < 3){
+			terminar;
+		}
+		c--;
+	}
+	imprimir("\n");
+	devuelve 0;
+}

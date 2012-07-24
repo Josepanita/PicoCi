@@ -629,7 +629,7 @@ struct LibraryFunction CLibrary[] =
     { LibSPrintf,       "char *sprintf(char *, char *, ...);" },
     { LibGets,          "char *gets(char *);" },
     { LibGetc,          "int getchar();" },
-    { LibExit,          "void exit(int);" },
+    { LibExit,          "void exit(int);" },    
 #ifdef PICOC_LIBRARY
     { LibSin,           "float sin(float);" },
     { LibCos,           "float cos(float);" },
@@ -671,6 +671,7 @@ struct LibraryFunction CLibrary[] =
     { LibMemcpy,        "void memcpy(void *,void *,int);" },
     { LibMemcmp,        "int memcmp(void *,void *,int);" },
 #endif
+/* SPANISH */
 #ifdef PICOC_LIBRARY
     { LibPow,           "float potencia(float,float);" },
     { LibSqrt,          "float raiz(float);" },
@@ -678,6 +679,7 @@ struct LibraryFunction CLibrary[] =
 #ifndef NO_STRING_FUNCTIONS
     { LibStrlen,        "int longitud(char *);" },
 #endif
+/* SPANISH */
     { NULL,             NULL }
 };
 
