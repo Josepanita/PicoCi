@@ -50,31 +50,52 @@ static struct ReservedWord ReservedWords[] =
     { "#si", TokenHashIf, NULL },
     { "#sidef", TokenHashIfdef, NULL },
     { "#sinodef", TokenHashIfndef, NULL },
+<<<<<<< HEAD
     { "#incluye", TokenHashInclude, NULL },
+=======
+    { "#incluir", TokenHashInclude, NULL },
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
     { "terminar", TokenBreak, NULL },
     { "caso", TokenCase, NULL },
     { "caracter", TokenCharType, NULL },
     { "continuar", TokenContinue, NULL },
     { "omision", TokenDefault, NULL },
     { "hacer", TokenDo, NULL },
+<<<<<<< HEAD
     { "entero", TokenIntType, NULL },
     { "sino", TokenElse, NULL },
     { "if", TokenIf, NULL },
     { "ir", TokenGoto, NULL },
     { "si", TokenIf, NULL },
+=======
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
 #ifndef NO_FP
     { "decimal", TokenFloatType, NULL },
     { "real", TokenDoubleType, NULL },
 #endif
+<<<<<<< HEAD
     
+=======
+    { "sino", TokenElse, NULL },
+    { "if", TokenIf, NULL },
+    { "ir", TokenGoto, NULL },
+    { "si", TokenIf, NULL },
+    { "entero", TokenIntType, NULL },
+    { "int", TokenIntType, NULL },
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
     { "devuelve", TokenReturn, NULL },
     { "vacio", TokenVoidType, NULL },
     { "mientras", TokenWhile, NULL },
     { "cambio", TokenSwitch, NULL },
     { "para", TokenFor, NULL },
+<<<<<<< HEAD
     { "estructura", TokenStructType, NULL },
     /* END SPANISH*/
     { "int", TokenIntType, NULL },
+=======
+    { "structura", TokenStructType, NULL },
+    /* END SPANISH*/
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
     { "auto", TokenAutoType, NULL },
     { "break", TokenBreak, NULL },
     { "case", TokenCase, NULL },

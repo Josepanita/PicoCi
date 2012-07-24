@@ -2,7 +2,11 @@ CC=gcc
 CFLAGS=-Wall -pedantic -g -DUNIX_HOST
 LIBS=-lm 
 
+<<<<<<< HEAD
 TARGET	= picoc
+=======
+TARGET	= cescript
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
 SRCS	= picoc.c table.c lex.c parse.c expression.c heap.c type.c \
 	variable.c clibrary.c platform.c include.c \
 	platform/platform_unix.c platform/library_unix.c \

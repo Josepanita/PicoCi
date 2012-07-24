@@ -136,12 +136,21 @@ struct LibraryFunction StdlibFunctions[] =
 {
 #ifndef NO_FP
     { StdlibAtof,           "float atof(char *);" },
+<<<<<<< HEAD
     { StdlibStrtod,         "double strtod(char *,char **);" },
 #endif
     { StdlibAtoi,           "int atoi(char *);" },
     { StdlibAtol,           "long atol(char *);" },
     { StdlibStrtol,         "long strtol(char *,char **,int);" },
     { StdlibStrtoul,        "long strtoul(char *,char **,int);" },
+=======
+    { StdlibStrtod,         "float strtod(char *,char **);" },
+#endif
+    { StdlibAtoi,           "int atoi(char *);" },
+    { StdlibAtol,           "int atol(char *);" },
+    { StdlibStrtol,         "int strtol(char *,char **,int);" },
+    { StdlibStrtoul,        "int strtoul(char *,char **,int);" },
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
     { StdlibMalloc,         "void *malloc(int);" },
     { StdlibCalloc,         "void *calloc(int,int);" },
     { StdlibRealloc,        "void *realloc(void *,int);" },
@@ -155,7 +164,11 @@ struct LibraryFunction StdlibFunctions[] =
 /*    { StdlibBsearch,        "void *bsearch(void *,void *,int,int,int (*)());" }, */
 /*    { StdlibQsort,          "void *qsort(void *,int,int,int (*)());" }, */
     { StdlibAbs,            "int abs(int);" },
+<<<<<<< HEAD
     { StdlibLabs,           "long labs(int);" },
+=======
+    { StdlibLabs,           "int labs(int);" },
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
 #if 0
     { StdlibDiv,            "div_t div(int);" },
     { StdlibLdiv,           "ldiv_t ldiv(int);" },

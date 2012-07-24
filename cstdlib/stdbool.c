@@ -16,8 +16,11 @@ void StdboolSetupFunc(void)
     /* defines */
     VariableDefinePlatformVar(NULL, "true", &IntType, (union AnyValue *)&trueValue, FALSE);
     VariableDefinePlatformVar(NULL, "false", &IntType, (union AnyValue *)&falseValue, FALSE);
+<<<<<<< HEAD
     VariableDefinePlatformVar(NULL, "verdadero", &IntType, (union AnyValue *)&trueValue, FALSE);
     VariableDefinePlatformVar(NULL, "falso", &IntType, (union AnyValue *)&falseValue, FALSE);
+=======
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
     VariableDefinePlatformVar(NULL, "__bool_true_false_are_defined", &IntType, (union AnyValue *)&trueValue, FALSE);
 }
 

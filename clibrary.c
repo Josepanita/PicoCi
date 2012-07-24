@@ -619,7 +619,10 @@ void LibMemcmp(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
     
     ReturnValue->Val->Integer = 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
 #endif
 
 /* list of all library functions and their prototypes */
