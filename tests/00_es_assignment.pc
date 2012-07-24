@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+real a;
+a = 42;
+printf("%.2f\n", a);
+
+caracter b = 'A';
+printf("%c\n", b);
+
+entero c = 12, d = 34;
+printf("%d, %d\n", c, d);
+
+int main() {
+	
+	mientras(c != 0){
+		printf("%d", c);
+		c = c -1;
+	}
+	printf("\n");
+	return 0;
+}
