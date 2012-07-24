@@ -18,9 +18,9 @@ int main(int argc, char **argv)
     
     if (argc < 2)
     {
-        printf("Format: picoc <csource1.c>... [- <arg1>...]    : corre un programa (llama a main() para iniciar )\n"
-               "        picoc -s <csource1.c>... [- <arg1>...] : modo script - corre un programa sin llamar a main()\n"
-               "        picoc -i                               : modo interactivo\n");
+        printf("Format: %s <csource1.c>... [- <arg1>...]    : corre un programa (llama a main() para iniciar )\n"
+               "        %s -s <csource1.c>... [- <arg1>...] : modo script - corre un programa sin llamar a main()\n"
+               "        %s -i                               : modo interactivo\n", argv[0],argv[0],argv[0]);
         exit(1);
     }
     

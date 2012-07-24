@@ -619,10 +619,7 @@ void LibMemcmp(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
     
     ReturnValue->Val->Integer = 0;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
 #endif
 
 /* list of all library functions and their prototypes */
@@ -673,6 +670,13 @@ struct LibraryFunction CLibrary[] =
     { LibMemset,        "void memset(void *,int,int);" },
     { LibMemcpy,        "void memcpy(void *,void *,int);" },
     { LibMemcmp,        "int memcmp(void *,void *,int);" },
+#endif
+#ifdef PICOC_LIBRARY
+    { LibPow,           "float potencia(float,float);" },
+    { LibSqrt,          "float raiz(float);" },
+#endif
+#ifndef NO_STRING_FUNCTIONS
+    { LibStrlen,        "int longitud(char *);" },
 #endif
     { NULL,             NULL }
 };

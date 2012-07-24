@@ -103,7 +103,7 @@ void StdlibAbs(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
 
 void StdlibLabs(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
-    ReturnValue->Val->Integer = labs(Param[0]->Val->Integer);
+    ReturnValue->Val->LongInteger = labs(Param[0]->Val->Integer);
 }
 
 #if 0
@@ -126,7 +126,7 @@ typedef struct { \
 } div_t; \
 \
 typedef struct { \
-    int quot, rem; \
+    long quot, rem; \
 } ldiv_t; \
 ";
 #endif
@@ -136,21 +136,12 @@ struct LibraryFunction StdlibFunctions[] =
 {
 #ifndef NO_FP
     { StdlibAtof,           "float atof(char *);" },
-<<<<<<< HEAD
     { StdlibStrtod,         "double strtod(char *,char **);" },
 #endif
     { StdlibAtoi,           "int atoi(char *);" },
     { StdlibAtol,           "long atol(char *);" },
     { StdlibStrtol,         "long strtol(char *,char **,int);" },
     { StdlibStrtoul,        "long strtoul(char *,char **,int);" },
-=======
-    { StdlibStrtod,         "float strtod(char *,char **);" },
-#endif
-    { StdlibAtoi,           "int atoi(char *);" },
-    { StdlibAtol,           "int atol(char *);" },
-    { StdlibStrtol,         "int strtol(char *,char **,int);" },
-    { StdlibStrtoul,        "int strtoul(char *,char **,int);" },
->>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
     { StdlibMalloc,         "void *malloc(int);" },
     { StdlibCalloc,         "void *calloc(int,int);" },
     { StdlibRealloc,        "void *realloc(void *,int);" },
@@ -164,15 +155,15 @@ struct LibraryFunction StdlibFunctions[] =
 /*    { StdlibBsearch,        "void *bsearch(void *,void *,int,int,int (*)());" }, */
 /*    { StdlibQsort,          "void *qsort(void *,int,int,int (*)());" }, */
     { StdlibAbs,            "int abs(int);" },
-<<<<<<< HEAD
     { StdlibLabs,           "long labs(int);" },
-=======
-    { StdlibLabs,           "int labs(int);" },
->>>>>>> c3435acdc4bc287becf13c49533cc00eef021aea
 #if 0
     { StdlibDiv,            "div_t div(int);" },
     { StdlibLdiv,           "ldiv_t ldiv(int);" },
 #endif
+    /* SPANISH */
+    { StdlibAtoi,           "int entero(char *);" },
+    { StdlibAtol,           "long valor(char *);" },
+    /* SPANISH */
     { NULL,                 NULL }
 };
 
