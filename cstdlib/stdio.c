@@ -46,6 +46,11 @@ struct StdVararg
     int NumArgs;
 };
 
+void ClearBuffer(){
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 /* initialises the I/O system so error reporting works */
 void BasicIOInit()
 {
@@ -54,6 +59,7 @@ void BasicIOInit()
     stdoutValue = stdout;
     stderrValue = stderr;
 }
+
 
 /* output a single character to either a FILE * or a string */
 void StdioOutPutc(int OutCh, StdOutStream *Stream)
@@ -314,6 +320,8 @@ int StdioBasePrintf(struct ParseState *Parser, FILE *Stream, char *StrOut, int S
 /* internal do-anything v[s][n]scanf() formatting system with input from strings or FILE * */
 int StdioBaseScanf(struct ParseState *Parser, FILE *Stream, char *StrIn, char *Format, struct StdVararg *Args)
 {
+    
+
     struct Value *ThisArg = Args->Param[0];
     int ArgCount = 0;
     void *ScanfArg[MAX_SCANF_ARGS];
@@ -334,7 +342,7 @@ int StdioBaseScanf(struct ParseState *Parser, FILE *Stream, char *StrIn, char *F
         else
             ProgramFail(Parser, "non-pointer argument to scanf() - argument %d after format", ArgCount+1);
     }
-    
+
     if (Stream != NULL)
         return fscanf(Stream, Format, ScanfArg[0], ScanfArg[1], ScanfArg[2], ScanfArg[3], ScanfArg[4], ScanfArg[5], ScanfArg[6], ScanfArg[7], ScanfArg[8], ScanfArg[9]);
     else
@@ -498,6 +506,13 @@ void StdioGets(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
     }
 }
 
+void StdioGetch(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
+{
+    fprintf(stdout, "Presione una tecla para continuar...");
+    ReturnValue->Val->Integer = getchar();
+
+}
+
 void StdioGetchar(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
 {
     ReturnValue->Val->Integer = getchar();
@@ -556,6 +571,7 @@ void StdioScanf(struct ParseState *Parser, struct Value *ReturnValue, struct Val
     ScanfArgs.Param = Param;
     ScanfArgs.NumArgs = NumArgs-1;
     ReturnValue->Val->Integer = StdioBaseScanf(Parser, stdin, NULL, Param[0]->Val->Pointer, &ScanfArgs);
+    ClearBuffer();
 }
 
 void StdioFscanf(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
@@ -565,6 +581,7 @@ void StdioFscanf(struct ParseState *Parser, struct Value *ReturnValue, struct Va
     ScanfArgs.Param = Param+1;
     ScanfArgs.NumArgs = NumArgs-2;
     ReturnValue->Val->Integer = StdioBaseScanf(Parser, Param[0]->Val->Pointer, NULL, Param[1]->Val->Pointer, &ScanfArgs);
+    ClearBuffer();
 }
 
 void StdioSscanf(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
@@ -574,6 +591,7 @@ void StdioSscanf(struct ParseState *Parser, struct Value *ReturnValue, struct Va
     ScanfArgs.Param = Param+1;
     ScanfArgs.NumArgs = NumArgs-2;
     ReturnValue->Val->Integer = StdioBaseScanf(Parser, NULL, Param[0]->Val->Pointer, Param[1]->Val->Pointer, &ScanfArgs);
+    ClearBuffer();
 }
 
 void StdioVsprintf(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
@@ -589,16 +607,19 @@ void StdioVsnprintf(struct ParseState *Parser, struct Value *ReturnValue, struct
 void StdioVscanf(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Integer = StdioBaseScanf(Parser, stdin, NULL, Param[0]->Val->Pointer, Param[1]->Val->Pointer);
+    ClearBuffer();
 }
 
 void StdioVfscanf(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Integer = StdioBaseScanf(Parser, Param[0]->Val->Pointer, NULL, Param[1]->Val->Pointer, Param[2]->Val->Pointer);
+    ClearBuffer();
 }
 
 void StdioVsscanf(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Integer = StdioBaseScanf(Parser, NULL, Param[0]->Val->Pointer, Param[1]->Val->Pointer, Param[2]->Val->Pointer);
+    ClearBuffer();
 }
 
 /* handy structure definitions */
@@ -657,6 +678,14 @@ struct LibraryFunction StdioFunctions[] =
     { StdioVscanf,   "int vscanf(char *, va_list);" },
     { StdioVfscanf,  "int vfscanf(FILE *, char *, va_list);" },
     { StdioVsscanf,  "int vsscanf(char *, char *, va_list);" },
+/* Spanish */
+    /* Getch */
+    { StdioGetch,   "int pausar();" },
+    /* Imprimir*/
+    { StdioPrintf,  "int imprimir(char *, ...);" },
+    /* Leer */
+    { StdioScanf,   "int leer(char *, ...);" },
+/* Spanish */
     { NULL,         NULL }
 };
 

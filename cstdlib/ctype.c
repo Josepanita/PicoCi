@@ -104,6 +104,9 @@ struct LibraryFunction StdCtypeFunctions[] =
     { StdToupper,      "int toupper(int);" },
     { StdIsascii,      "int isascii(int);" },
     { StdToascii,      "int toascii(int);" },
+/* Spanish */
+    
+/* Spanish */
     { NULL,             NULL }
 };
 

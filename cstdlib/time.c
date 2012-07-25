@@ -101,6 +101,8 @@ struct LibraryFunction StdTimeFunctions[] =
     { StdStrftime,      "int strftime(char *, int, char *, struct tm *);" },
     { StdStrptime,      "char *strptime(char *, char *, struct tm *);" },
     { StdTimegm,        "int timegm(struct tm *);" },
+    /*Spanish */
+    { StdTime,          "int tiempo(int *);" },
     { NULL,             NULL }
 };
 

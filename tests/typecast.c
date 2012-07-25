@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-int a;
+entero a;
 a = 42;
 printf("%d\n", a);
 
-int b = 64;
-printf("%d\n", b);
+real b = 64;
+printf("%.2f\n", b);
 
-int c = 12, d = 34;
+entero c = 12, d = (entero) 'A';
 printf("%d, %d\n", c, d);
 
 void main() {
