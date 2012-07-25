@@ -161,7 +161,7 @@ struct LibraryFunction StdlibFunctions[] =
     { StdlibLdiv,           "ldiv_t ldiv(int);" },
 #endif
     /* SPANISH */
-    { StdlibAtoi,           "int entero(char *);" },
+    { StdlibAtoi,           "int numero(char *);" },
     { StdlibAtol,           "long valor(char *);" },
     /* SPANISH */
     { NULL,                 NULL }
