@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <termios.h>
 #include <unistd.h>
+#include <Python.h>
 
 int getch(void)
 {
@@ -24,7 +25,6 @@ float aleatorio(){
 	a = i / 1000000;
 	return a;
 }
-
 
 char* subcadena(char* cadena, int comienzo, int longitud)
 {

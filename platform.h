@@ -26,8 +26,8 @@
 #define LOCAL_TABLE_SIZE 11                 /* size of local variable table (can expand) */
 #define STRUCT_TABLE_SIZE 11                /* size of struct/union member table (can expand) */
 
-#define INTERACTIVE_PROMPT_START "starting picoc " PICOC_VERSION "\n"
-#define INTERACTIVE_PROMPT_STATEMENT "picoc> "
+#define INTERACTIVE_PROMPT_START "CEscript " PICOC_VERSION "\n"
+#define INTERACTIVE_PROMPT_STATEMENT "cescript $> "
 #define INTERACTIVE_PROMPT_LINE "     > "
 
 /* host platform includes */

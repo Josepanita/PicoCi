@@ -1,4 +1,4 @@
-#include <stdio.h>
+#incluye <stdio.h>
 
 real a;
 a = 42;
@@ -10,10 +10,9 @@ imprimir("%c\n", b);
 entero c = 12, d = 34;
 imprimir("%d, %d\n", c, d);
 
-int main() {
+entero main() {
 	mientras(c != 0){
 		imprimir("%d", c);
-		scanf("%d", &d);
 		si(d < 3){
 			terminar;
 		}
