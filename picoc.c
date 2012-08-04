@@ -18,9 +18,9 @@ int main(int argc, char **argv)
     
     if (argc < 2)
     {
-        printf("Format: cescript <csource1.c>... [- <arg1>...]    : corre un programa (llama a main() para iniciar )\n"
-               "        cescript -s <csource1.c>... [- <arg1>...] : modo script - corre un programa sin llamar a main()\n"
-               "        cescript -i                               : modo interactivo\n");
+        printf("Format: picoc <csource1.c>... [- <arg1>...]    : corre un programa (llama a main() para iniciar )\n"
+               "        picoc -s <csource1.c>... [- <arg1>...] : modo script - corre un programa sin llamar a main()\n"
+               "        picoc -i                               : modo interactivo\n");
         exit(1);
     }
     
@@ -54,7 +54,6 @@ int main(int argc, char **argv)
     }
     
     PicocCleanup();
-    exit(PicocExitValue);
     return PicocExitValue;
 }
 #else

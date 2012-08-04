@@ -487,6 +487,9 @@ void StdErrnoSetupFunc(void);
 /* ctype.c */
 extern struct LibraryFunction StdCtypeFunctions[];
 
+/* custom.c */
+extern struct LibraryFunction CustomFunctions[];
+
 /* stdbool.c */
 extern const char StdboolDefs[];
 void StdboolSetupFunc(void);

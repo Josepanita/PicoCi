@@ -16,8 +16,6 @@ int main() {
 		printf("%d", c);
 		c = c -1;
 	}
-	int d = 0;
-	scanf("%d", &d);
-	printf("%d \n", d);
+	printf("\n");
 	return 0;
 }

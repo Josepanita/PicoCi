@@ -31,6 +31,8 @@ void IncludeInit()
     IncludeRegister("string.h", &StringSetupFunc, &StringFunctions[0], NULL);
     IncludeRegister("time.h", &StdTimeSetupFunc, &StdTimeFunctions[0], StdTimeDefs);
     IncludeRegister("unistd.h", &UnistdSetupFunc, &UnistdFunctions[0], UnistdDefs);
+
+    IncludeRegister("cstdlib/cescript.h", NULL, &CustomFunctions[0], NULL);
 #endif
 }
 

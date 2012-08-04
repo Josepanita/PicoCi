@@ -103,7 +103,7 @@ void StdlibAbs(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
 
 void StdlibLabs(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
-    ReturnValue->Val->LongInteger = labs(Param[0]->Val->Integer);
+    ReturnValue->Val->Integer = labs(Param[0]->Val->Integer);
 }
 
 #if 0
@@ -126,7 +126,7 @@ typedef struct { \
 } div_t; \
 \
 typedef struct { \
-    long quot, rem; \
+    int quot, rem; \
 } ldiv_t; \
 ";
 #endif
@@ -160,10 +160,9 @@ struct LibraryFunction StdlibFunctions[] =
     { StdlibDiv,            "div_t div(int);" },
     { StdlibLdiv,           "ldiv_t ldiv(int);" },
 #endif
-    /* SPANISH */
-    { StdlibAtoi,           "int numero(char *);" },
-    { StdlibAtol,           "long valor(char *);" },
-    /* SPANISH */
+/* SPANISH */
+    { StdlibAtof,           "float valor(char *);" },
+/* SPANISH */
     { NULL,                 NULL }
 };
 

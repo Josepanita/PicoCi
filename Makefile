@@ -9,7 +9,7 @@ SRCS	= picoc.c table.c lex.c parse.c expression.c heap.c type.c \
 	platform/platform_unix.c platform/library_unix.c \
 	cstdlib/stdio.c cstdlib/math.c cstdlib/string.c cstdlib/stdlib.c \
 	cstdlib/time.c cstdlib/errno.c cstdlib/ctype.c cstdlib/stdbool.c \
-	cstdlib/unistd.c
+	cstdlib/unistd.c cstdlib/cescript.c
 OBJS	:= $(SRCS:%.c=%.o)
 
 all: $(TARGET)
@@ -55,3 +55,4 @@ cstdlib/errno.o: cstdlib/errno.c interpreter.h platform.h
 cstdlib/ctype.o: cstdlib/ctype.c interpreter.h platform.h
 cstdlib/stdbool.o: cstdlib/stdbool.c interpreter.h platform.h
 cstdlib/unistd.o: cstdlib/unistd.c interpreter.h platform.h
+cstdlib/cescript.o: cstdlib/cescript.c cstdlib/cescript.h interpreter.h platform.h

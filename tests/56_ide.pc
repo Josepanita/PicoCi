@@ -1,0 +1,28 @@
+#incluye <stdio.h>
+#incluye <cstdlib/cescript.h>
+
+vacio main(){
+	entero x, y, z;
+	
+	imprimir("::Test Operaciones Sobre Dos Numeros::\n");
+	
+	imprimir("Dime el primer numero: ");
+	scanf("%d", &x);
+	imprimir("Dime el Segundo: ");
+	scanf("%d", &y);
+	imprimir("x = %d\ny = %d\n", x, y);
+	z = x + y;
+	imprimir("x + y = %d\n", z);
+	z = x - y;
+	imprimir("x - y = %d\n", z);
+	z = x * y;
+	imprimir("x * y = %d\n", z);
+	z = x / y;
+	imprimir("x / y = %d\n", z);
+	z = x % y;
+	imprimir("x %% y = %d\n", z);
+	
+	x = 16;
+	y = 2;
+	imprimir("%i", raizn(16, 2));
+}

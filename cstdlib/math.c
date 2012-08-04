@@ -162,6 +162,12 @@ struct LibraryFunction MathFunctions[] =
     { MathSqrt,         "float sqrt(float);" },
     { MathTan,          "float tan(float);" },
     { MathTanh,         "float tanh(float);" },
+/* SPANISH */
+    { MathCos,          "float coseno(float);" },
+    { MathTan,          "float tangente(float);" },
+    { MathSin,          "float seno(float);" },
+    { MathLog,          "float logn(float);" },
+/* SPANISH */
     { NULL,             NULL }
 };
 
