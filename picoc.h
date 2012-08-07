@@ -2,7 +2,7 @@
 #define PICOC_H
 
 /* picoc version number */
-#define PICOC_VERSION "v2.1"
+#define PICOC_VERSION "v1.1"
 
 /* handy definitions */
 #ifndef TRUE
