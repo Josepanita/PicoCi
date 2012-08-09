@@ -15,6 +15,8 @@ Es un interprete de lenguage C, soporta casi todas las funciones de lenguaje C (
 
 * Soporte a Inclusion de archivos (`#include <archivo>`)
 
+* Soporte a definicion de funciones, y a llamada de funciones pertenecientes a las librerias Standard Preenlazadas
+
 * Librerias Standard Preenlazadas
 	+ ctype.h
 	+ errno.h
@@ -29,4 +31,4 @@ Es un interprete de lenguage C, soporta casi todas las funciones de lenguaje C (
 
 * Consola interactiva (como Python).
 
-* Galeria de [Tests](./test/)
+* Galeria de [Tests](./develop/test/)
