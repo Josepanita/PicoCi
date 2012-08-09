@@ -3,7 +3,7 @@
 
 /* platform-dependent code for running programs is in this file */
 
-#ifdef UNIX_HOST
+#if defined(UNIX_HOST) || defined(WINDOWS_HOST)
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

@@ -31,7 +31,7 @@
 #define INTERACTIVE_PROMPT_LINE "     > "
 
 /* host platform includes */
-#ifdef UNIX_HOST
+#if defined(UNIX_HOST) || defined(WINDOWS_HOST)
 # define USE_MALLOC_STACK                   /* stack is allocated using malloc() */
 # define USE_MALLOC_HEAP                    /* heap is allocated using malloc() */
 # include <stdio.h>

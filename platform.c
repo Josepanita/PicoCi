@@ -40,7 +40,7 @@ void PicocCleanup()
 }
 
 /* platform-dependent code for running programs */
-#ifdef UNIX_HOST
+#if defined(UNIX_HOST) || defined(WINDOWS_HOST)
 
 #define CALL_MAIN_NO_ARGS_RETURN_VOID "main();"
 #define CALL_MAIN_WITH_ARGS_RETURN_VOID "main(__argc,__argv);"

@@ -1,6 +1,6 @@
 /* string.h library for large systems - small embedded systems use clibrary.c instead */
 #include "../interpreter.h"
-
+#include <string.h>
 #ifndef BUILTIN_MINI_STDLIB
 
 static int ZeroValue = 0;
@@ -33,16 +33,6 @@ void StringStrcat(struct ParseState *Parser, struct Value *ReturnValue, struct V
 void StringStrncat(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Pointer = strncat(Param[0]->Val->Pointer, Param[1]->Val->Pointer, Param[2]->Val->Integer);
-}
-
-void StringIndex(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
-{
-    ReturnValue->Val->Pointer = index(Param[0]->Val->Pointer, Param[1]->Val->Integer);
-}
-
-void StringRindex(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
-{
-    ReturnValue->Val->Pointer = rindex(Param[0]->Val->Pointer, Param[1]->Val->Integer);
 }
 
 void StringStrlen(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
@@ -130,16 +120,28 @@ void StringStrdup(struct ParseState *Parser, struct Value *ReturnValue, struct V
     ReturnValue->Val->Pointer = strdup(Param[0]->Val->Pointer);
 }
 
+#ifndef WINDOWS_HOST
+
 void StringStrtok_r(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Pointer = strtok_r(Param[0]->Val->Pointer, Param[1]->Val->Pointer, Param[2]->Val->Pointer);
 }
 
+void StringIndex(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
+{
+    ReturnValue->Val->Pointer = index(Param[0]->Val->Pointer, Param[1]->Val->Integer);
+}
+
+void StringRindex(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
+{
+    ReturnValue->Val->Pointer = rindex(Param[0]->Val->Pointer, Param[1]->Val->Integer);
+}
+
+#endif
+
 /* all string.h functions */
 struct LibraryFunction StringFunctions[] =
 {
-    { StringIndex,         "char *index(char *,int);" },
-    { StringRindex,        "char *rindex(char *,int);" },
     { StringMemcpy,        "void *memcpy(void *,void *,int);" },
     { StringMemmove,       "void *memmove(void *,void *,int);" },
     { StringMemchr,        "void *memchr(char *,int,int);" },
@@ -163,7 +165,11 @@ struct LibraryFunction StringFunctions[] =
     { StringStrtok,        "char *strtok(char *,char *);" },
     { StringStrxfrm,       "int strxfrm(char *,char *,int);" },
     { StringStrdup,        "char *strdup(char *);" },
+    #ifndef WINDOWS_HOST
+    { StringIndex,         "char *index(char *,int);" },
+    { StringRindex,        "char *rindex(char *,int);" },
     { StringStrtok_r,      "char *strtok_r(char *,char *,char **);" },
+    #endif
     { NULL,             NULL }
 };
 

@@ -420,10 +420,13 @@ void StdioFerror(struct ParseState *Parser, struct Value *ReturnValue, struct Va
     ReturnValue->Val->Integer = ferror((FILE *)Param[0]->Val->Pointer);
 }
 
-void StdioFileno(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
+#ifndef WINDOWS_HOST
+void StdioFileno(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Integer = fileno(Param[0]->Val->Pointer);
 }
+#endif
+
 
 void StdioFflush(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
 {
@@ -648,7 +651,9 @@ struct LibraryFunction StdioFunctions[] =
     { StdioClearerr,"void clearerr(FILE *);" },
     { StdioFeof,    "int feof(FILE *);" },
     { StdioFerror,  "int ferror(FILE *);" },
+    #ifndef WINDOWS_HOST
     { StdioFileno,  "int fileno(FILE *);" },
+    #endif
     { StdioFflush,  "int fflush(FILE *);" },
     { StdioFgetpos, "int fgetpos(FILE *, int *);" },
     { StdioFsetpos, "int fsetpos(FILE *, int *);" },

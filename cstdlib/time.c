@@ -41,11 +41,6 @@ void StdGmtime(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
     ReturnValue->Val->Pointer = gmtime(Param[0]->Val->Pointer);
 }
 
-void StdGmtime_r(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
-{
-    ReturnValue->Val->Pointer = gmtime_r(Param[0]->Val->Pointer, Param[1]->Val->Pointer);
-}
-
 void StdLocaltime(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Pointer = localtime(Param[0]->Val->Pointer);
@@ -66,10 +61,16 @@ void StdStrftime(struct ParseState *Parser, struct Value *ReturnValue, struct Va
     ReturnValue->Val->Integer = strftime(Param[0]->Val->Pointer, Param[1]->Val->Integer, Param[2]->Val->Pointer, Param[3]->Val->Pointer);
 }
 
+#ifndef WINDOWS_HOST
+void StdGmtime_r(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
+{
+    ReturnValue->Val->Pointer = gmtime_r(Param[0]->Val->Pointer, Param[1]->Val->Pointer);
+}
+
 void StdStrptime(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
-	  extern char *strptime(const char *s, const char *format, struct tm *tm);
-	  
+      extern char *strptime(const char *s, const char *format, struct tm *tm);
+
     ReturnValue->Val->Pointer = strptime(Param[0]->Val->Pointer, Param[1]->Val->Pointer, Param[2]->Val->Pointer);
 }
 
@@ -77,6 +78,7 @@ void StdTimegm(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
 {
     ReturnValue->Val->Integer = timegm(Param[0]->Val->Pointer);
 }
+#endif
 
 /* handy structure definitions */
 const char StdTimeDefs[] = "\
@@ -94,13 +96,16 @@ struct LibraryFunction StdTimeFunctions[] =
     { StdDifftime,      "double difftime(int, int);" },
 #endif
     { StdGmtime,        "struct tm *gmtime(int *);" },
-    { StdGmtime_r,      "struct tm *gmtime_r(int *, struct tm *);" },
+
     { StdLocaltime,     "struct tm *localtime(int *);" },
     { StdMktime,        "int mktime(struct tm *ptm);" },
     { StdTime,          "int time(int *);" },
     { StdStrftime,      "int strftime(char *, int, char *, struct tm *);" },
-    { StdStrptime,      "char *strptime(char *, char *, struct tm *);" },
+#ifndef WINDOWS_HOST
     { StdTimegm,        "int timegm(struct tm *);" },
+    { StdStrptime,      "char *strptime(char *, char *, struct tm *);" },
+    { StdGmtime_r,      "struct tm *gmtime_r(int *, struct tm *);" },
+#endif
     /*Spanish */
     { StdTime,          "int tiempo(int *);" },
     { NULL,             NULL }
@@ -112,7 +117,7 @@ void StdTimeSetupFunc(void)
 {
     /* make a "struct tm" which is the same size as a native tm structure */
     TypeCreateOpaqueStruct(NULL, TableStrRegister("tm"), sizeof(struct tm));
-    
+
     /* define CLK_PER_SEC etc. */
     VariableDefinePlatformVar(NULL, "CLOCKS_PER_SEC", &IntType, (union AnyValue *)&CLOCKS_PER_SECValue, FALSE);
 #ifdef CLK_PER_SEC
