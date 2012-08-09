@@ -28,3 +28,5 @@ Es un interprete de lenguage C, soporta casi todas las funciones de lenguaje C (
 	+ cescript.h &mdash; Libreria personalizada con funciones utiles
 
 * Consola interactiva (como Python).
+
+* Galeria de [Tests](./test/)
