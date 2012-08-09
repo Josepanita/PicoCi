@@ -73,6 +73,7 @@ static struct ReservedWord ReservedWords[] =
     { "cambio", TokenSwitch, NULL },
     { "para", TokenFor, NULL },
     { "estructura", TokenStructType, NULL },
+    { "signado", TokenSignedType, NULL },
     /* END SPANISH*/
     { "int", TokenIntType, NULL },
     { "auto", TokenAutoType, NULL },
