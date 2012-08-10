@@ -253,7 +253,7 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 	</tr>
 </table>
 
-## Funciones 
+## Operaciones con Tiempo `time.h`
 
 <table>
 <tr>
@@ -288,12 +288,94 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 	</tr>	
 </table>
 
+## Libreria de Acceso a funciones del sistema `unistd.h`
 
-
-
-				
-
-				
-
-    
-    
+<table>
+	<tr>
+		<td>
+			<ul>
+				<li>access()</li>
+			    <li>alarm()</li>
+			    <li>chdir()</li>
+			    <li>chroot()</li>
+			    <li>chown()</li>
+			    <li>close()</li>
+			    <li>confstr()</li>
+			    <li>ctermid()</li>
+			    <li>dup()</li>
+			    <li>dup2()</li>
+			    <li>_exit()</li>
+			    <li>fchown()</li>
+			    <li>fchdir()</li>
+			    <li>fdatasync()</li>
+			    <li>fork()</li>
+			    <li>fpathconf()</li>
+			    <li>fsync()</li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+			    <li>ftruncate()</li>
+			    <li>getcwd()</li>
+			    <li>getdtablesize()</li>
+			    <li>getegid()</li>
+			    <li>geteuid()</li>
+			    <li>getgid()</li>
+			    <li>gethostid()</li>
+			    <li>getlogin()</li>
+			    <li>getlogin_r()</li>
+			    <li>getpagesize()</li>
+			    <li>getpass()</li>
+			    <li>getpgrp()</li>
+			    <li>getpid()</li>
+			    <li>getppid()</li>
+			    <li>getuid()</li>
+				<li>getwd()</li>
+			    <li>isatty()</li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li>lchown()</li>
+			    <li>link()</li>
+			    <li>lockf()</li>
+			    <li>lseek()</li>
+			    <li>nice()</li>
+			    <li>pathconf()</li>
+			    <li>pause()</li>
+			    <li>read()</li>
+			    <li>readlink()</li>
+			    <li>rmdir()</li>
+			    <li>sbrk()</li>
+			    <li>setgid()</li>
+			    <li>setpgid()</li>
+			    <li>setpgrp()</li>
+			    <li>setregid()</li>
+			    <li>setreuid()</li>
+			</ul>
+		</td>
+		<td>
+			<ul>
+				<li>setsid()</li>
+				<li>setuid()</li>
+			    <li>sleep()</li>
+			    <li>symlink()</li>
+			    <li>sync()</li>
+			    <li>sysconf()</li>
+			    <li>tcgetpgrp()</li>
+			    <li>tcsetpgrp()</li>
+			    <li>truncate()</li>
+			    <li>ttyname()</li>
+			    <li>ttyname_r()</li>
+			    <li>ualarm()</li>
+			    <li>unlink()</li>
+			    <li>usleep()</li>
+			    <li>vfork()</li>
+			    <li>write()</li>
+			</ul>
+		</td>
+	</tr>
+</table>
+			    
+			    
+			    
