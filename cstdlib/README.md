@@ -6,7 +6,7 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 # Funciones Por Defecto
 
 ## Operaciones con caracteres `ctype.h`
-<table>
+<table style="width: 100%;">
 	<tr>
 		<td>
 			<ul>
