@@ -44,7 +44,7 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 </table>
 
 ## Operaciones Matematicas `math.h`
-<table>
+<table width="100%">
 	<tr>
 		<td>
 			<ul>
@@ -90,7 +90,7 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
  	
 ## Operaciones de Entrada/Salida`stdio.h`
 
-<table>
+<table width="100%">
 	<tr>
 		<td>
 			<ul>
@@ -162,7 +162,7 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 
 ## Gestion de Memoria dinámica, tipos y procesos `stdlib.h`
 
-<table>
+<table width="100%">
 	<tr>
 		<td>
 			<ul>
@@ -203,7 +203,7 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 
 ## Funciones con Cadenas de caracteres `string.h`
    
-<table>
+<table width="100%">
 	<tr>
 		<td>
 			<ul>
@@ -255,7 +255,7 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 
 ## Operaciones con Tiempo `time.h`
 
-<table>
+<table width="100%">
 <tr>
 		<td>
 			<ul>
@@ -290,7 +290,7 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 
 ## Libreria de Acceso a funciones de sistemas POSIX `unistd.h`
 Ninguna de estas funciones estan disponibles para windows
-<table>
+<table width="100%">
 	<tr>
 		<td>
 			<ul>
@@ -379,7 +379,7 @@ Ninguna de estas funciones estan disponibles para windows
 
 ## Libreria Personalizada `cescript.h`
 
-<table>
+<table width="100%">
 	<tr>
 		<td>
 			<ul>
