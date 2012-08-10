@@ -288,8 +288,8 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 	</tr>	
 </table>
 
-## Libreria de Acceso a funciones del sistema `unistd.h`
-
+## Libreria de Acceso a funciones de sistemas POSIX `unistd.h`
+Ninguna de estas funciones estan disponibles para windows
 <table>
 	<tr>
 		<td>
@@ -376,6 +376,23 @@ Aqui se encuentran los enlaces hacia las librerias Standard de C (C STL) para CE
 		</td>
 	</tr>
 </table>
-			    
-			    
-			    
+
+## Libreria Personalizada `cescript.h`
+
+<table>
+	<tr>
+		<td>
+			<ul>
+				<li>aleatorio()</li>
+				<li>subcadena()</li>
+				<li>izquierda()</li>
+				<li>derecha()</li>
+				<li>raizn()</li>
+				<li>signo()</li>
+				<li>pausar()</li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+
