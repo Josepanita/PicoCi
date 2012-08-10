@@ -1,5 +1,4 @@
-CEscript
-========
+# CEscript
 
 CEscript es un fork del proyecto [PicoC], traducido al español.
 
@@ -21,7 +20,12 @@ Es un interprete de lenguage C, soporta casi todas las funciones de lenguaje C (
 
 * Consola interactiva (como Python).
 
-* Galeria de [Tests]
+* Galeria de [Tests] con muestras de las capacidades del interprete, y de su sintaxis.
+
+
+## Compilando CEscript
+
+CEscript puede ser compilado desde una plataforma UNIX/Linux/POSIX usando `make`.
 
 [PicoC]: http://code.google.com/p/picoc/
 [Librerias Standard]: ./develop/cstdlib/
