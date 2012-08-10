@@ -31,6 +31,11 @@ void CustomSigno(struct ParseState *Parser, struct Value *ReturnValue, struct Va
     ReturnValue->Val->Integer = signo(Param[0]->Val->FP);
 }
 
+void CustomPausar(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
+{
+    ReturnValue->Val->Integer = pausar();
+}
+
 /* all cescript.h functions */
 struct LibraryFunction CustomFunctions[] =
 {
@@ -40,5 +45,6 @@ struct LibraryFunction CustomFunctions[] =
     { CustomIzquierda,       "char *izquierda(char *,int);" },
     { CustomRaizn,       "float raizn(float,float);" },
     { CustomSigno,       "int signo(float);" },
+    { CustomPausar,   "int pausar();" },
     { NULL,             NULL }
 };

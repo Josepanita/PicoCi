@@ -4,6 +4,13 @@ LIBS=-lm
 
 TARGET	= cescript
 
+#------------------- FOR WINDOWS USERS -----------------------
+# CC=gcc
+# CFLAGS=-Wall -pedantic -g -DWINDOWS_HOST
+# LIBS=
+# TARGET= cescript.exe
+#-------------------------------------------------------------
+
 SRCS	= picoc.c table.c lex.c parse.c expression.c heap.c type.c \
 	variable.c clibrary.c platform.c include.c \
 	platform/platform_unix.c platform/library_unix.c \

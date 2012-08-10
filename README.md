@@ -17,7 +17,7 @@ Es un interprete de lenguage C, soporta casi todas las funciones de lenguaje C (
 
 * Soporte a definicion de funciones, y a llamada de funciones pertenecientes a las librerias Standard Preenlazadas
 
-* Librerias Standard Preenlazadas
+* Librerias Standard Preenlazadas [Librerias](./develop/cstdlib/)
 	+ ctype.h
 	+ errno.h
 	+ math.h

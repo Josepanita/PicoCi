@@ -1,6 +1,7 @@
 #include <string.h>
 #include <time.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 
 float aleatorio(void);
@@ -9,6 +10,7 @@ char* izquierda(char*, int);
 char* derecha(char*, int);
 float raizn(float, float);
 int signo(float n);
+int pausar(void);
 
 float aleatorio() {
 	float a, i;
@@ -45,4 +47,11 @@ int signo(float n){
 	}else {
 		return -1;
 	}
+}
+
+int pausar(){
+	puts("Presione una tecla para continuar...");
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    return getchar();
 }
