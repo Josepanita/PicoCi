@@ -89,13 +89,6 @@ void StdlibSystem(struct ParseState *Parser, struct Value *ReturnValue, struct V
     ReturnValue->Val->Integer = system(Param[0]->Val->Pointer);
 }
 
-#if 0
-void StdlibBsearch(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
-{
-    ReturnValue->Val->Pointer = bsearch(Param[0]->Val->Pointer, Param[1]->Val->Pointer, Param[2]->Val->Integer, Param[3]->Val->Integer, (int (*)())Param[4]->Val->Pointer);
-}
-#endif
-
 void StdlibAbs(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Integer = abs(Param[0]->Val->Integer);
@@ -116,9 +109,12 @@ void StdlibLdiv(struct ParseState *Parser, struct Value *ReturnValue, struct Val
 {
     ReturnValue->Val->Integer = ldiv(Param[0]->Val->Integer, Param[1]->Val->Integer);
 }
-#endif
 
-#if 0
+void StdlibBsearch(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
+{
+    ReturnValue->Val->Pointer = bsearch(Param[0]->Val->Pointer, Param[1]->Val->Pointer, Param[2]->Val->Integer, Param[3]->Val->Integer, (int (*)())Param[4]->Val->Pointer);
+}
+
 /* handy structure definitions */
 const char StdlibDefs[] = "\
 typedef struct { \
@@ -152,16 +148,17 @@ struct LibraryFunction StdlibFunctions[] =
     { StdlibExit,           "void exit(int);" },
     { StdlibGetenv,         "char *getenv(char *);" },
     { StdlibSystem,         "int system(char *);" },
-/*    { StdlibBsearch,        "void *bsearch(void *,void *,int,int,int (*)());" }, */
-/*    { StdlibQsort,          "void *qsort(void *,int,int,int (*)());" }, */
+/*  { StdlibBsearch,        "void *bsearch(void *,void *,int,int,int (*)());" }, 
+    { StdlibQsort,          "void *qsort(void *,int,int,int (*)());" }, 
+    { StdlibDiv,            "div_t div(int);" },
+    { StdlibLdiv,           "ldiv_t ldiv(int);" }, */
     { StdlibAbs,            "int abs(int);" },
     { StdlibLabs,           "long labs(int);" },
-#if 0
-    { StdlibDiv,            "div_t div(int);" },
-    { StdlibLdiv,           "ldiv_t ldiv(int);" },
-#endif
 /* SPANISH */
+#ifndef NO_FP
     { StdlibAtof,           "float valor(char *);" },
+    { StdlibAtoi,           "int entero(char *);" },
+#endif
 /* SPANISH */
     { NULL,                 NULL }
 };
