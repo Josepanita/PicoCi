@@ -385,10 +385,22 @@ Ninguna de estas funciones estan disponibles para windows
 			<ul>
 				<li>aleatorio()</li>
 				<li>subcadena()</li>
+			</ul>
+		</td>
+		<td>
+			<ul>
 				<li>izquierda()</li>
 				<li>derecha()</li>
+			</ul>
+		</td>
+		<td>
+			<ul>
 				<li>raizn()</li>
 				<li>signo()</li>
+			</ul>
+		</td>
+		<td>
+			<ul>
 				<li>pausar()</li>
 			</ul>
 		</td>
