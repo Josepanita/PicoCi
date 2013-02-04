@@ -2,7 +2,7 @@
 #define PICOC_H
 
 /* picoc version number */
-#define PICOC_VERSION "v2.1"
+#define PICOC_VERSION "v2.2"
 
 /* handy definitions */
 #ifndef TRUE
@@ -10,8 +10,6 @@
 #define FALSE 0
 #endif
 
-
-#if defined(UNIX_HOST) || defined(WINDOWS_HOST)
 #include <setjmp.h>
 
 /* mark where to end the program for platforms which require this */
@@ -19,14 +17,6 @@ extern jmp_buf PicocExitBuf;
 
 /* this has to be a macro, otherwise errors will occur due to the stack being corrupt */
 #define PicocPlatformSetExitPoint() setjmp(PicocExitBuf)
-#endif
-
-#ifdef SURVEYOR_HOST
-/* mark where to end the program for platforms which require this */
-extern int PicocExitBuf[];
-
-#define PicocPlatformSetExitPoint() setjmp(PicocExitBuf)
-#endif
 
 /* parse.c */
 void PicocParse(const char *FileName, const char *Source, int SourceLen, int RunIt, int CleanupNow, int CleanupSource);

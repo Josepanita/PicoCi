@@ -10,18 +10,10 @@ static void *HeapBottom = NULL;                     /* the bottom of the (downwa
 static void *StackFrame = NULL;                     /* the current stack frame */
 void *HeapStackTop = NULL;                          /* the top of the stack */
 #else
-# ifdef SURVEYOR_HOST
-static unsigned char *HeapMemory = (unsigned char *)C_HEAPSTART;      /* all memory - stack and heap */
-static void *HeapBottom = (void *)C_HEAPSTART + HEAP_SIZE;  /* the bottom of the (downward-growing) heap */
-static void *StackFrame = (void *)C_HEAPSTART;              /* the current stack frame */
-void *HeapStackTop = (void *)C_HEAPSTART;                   /* the top of the stack */
-void *HeapMemStart = (void *)C_HEAPSTART;
-# else
 static unsigned char HeapMemory[HEAP_SIZE];         /* all memory - stack and heap */
 static void *HeapBottom = &HeapMemory[HEAP_SIZE];   /* the bottom of the (downward-growing) heap */
 static void *StackFrame = &HeapMemory[0];           /* the current stack frame */
 void *HeapStackTop = &HeapMemory[0];                /* the top of the stack */
-# endif
 #endif
 
 static struct AllocNode *FreeListBucket[FREELIST_BUCKETS];      /* we keep a pool of freelist buckets to reduce fragmentation */

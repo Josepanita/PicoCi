@@ -26,7 +26,7 @@ static FILE *stdinValue;
 static FILE *stdoutValue;
 static FILE *stderrValue;
 
-struct ValueType *FilePtrType = NULL;
+/*struct ValueType *FilePtrType = NULL;*/
 
 
 /* our own internal output stream which can output to FILE * or strings */
@@ -509,16 +509,10 @@ void StdioGets(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
     }
 }
 
-void StdioGetch(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
-{
-    fprintf(stdout, "Presione una tecla para continuar...");
-    ReturnValue->Val->Integer = getchar();
-
-}
-
 void StdioGetchar(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
 {
     ReturnValue->Val->Integer = getchar();
+    ClearBuffer();
 }
 
 void StdioPrintf(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
@@ -625,6 +619,11 @@ void StdioVsscanf(struct ParseState *Parser, struct Value *ReturnValue, struct V
     ClearBuffer();
 }
 
+void StdioClearBuffer(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
+{
+    ClearBuffer();
+}
+
 /* handy structure definitions */
 const char StdioDefs[] = "\
 typedef struct __va_listStruct va_list; \
@@ -682,14 +681,15 @@ struct LibraryFunction StdioFunctions[] =
     { StdioVsnprintf,"int vsnprintf(char *, int, char *, va_list);" },
     { StdioVscanf,   "int vscanf(char *, va_list);" },
     { StdioVfscanf,  "int vfscanf(FILE *, char *, va_list);" },
-    { StdioVsscanf,  "int vsscanf(char *, char *, va_list);" },
+    { StdioClearBuffer,  "int clear_buffer();" },
+
 /* Spanish */
-    /* Getch */
-    { StdioGetch,   "int pausar();" },
     /* Imprimir*/
     { StdioPrintf,  "int imprimir(char *, ...);" },
     /* Leer */
     { StdioScanf,   "int leer(char *, ...);" },
+    /* Limpiar Buffer de lectura*/
+    { StdioClearBuffer,  "int limpiar_buffer();" },
 /* Spanish */
     { NULL,         NULL }
 };

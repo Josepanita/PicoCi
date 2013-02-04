@@ -1,15 +1,15 @@
 #incluye <stdio.h>
-#incluye <cstdlib/cescript.h>
+#incluye <cescript.h>
 
-vacio main(){
+entero main(){
 	entero x, y, z;
 	
 	imprimir("::Test Operaciones Sobre Dos Numeros::\n");
 	
 	imprimir("Dime el primer numero: ");
-	scanf("%d", &x);
+	leer("%d", &x);
 	imprimir("Dime el Segundo: ");
-	scanf("%d", &y);
+	leer("%d", &y);
 	imprimir("x = %d\ny = %d\n", x, y);
 	z = x + y;
 	imprimir("x + y = %d\n", z);
@@ -25,4 +25,5 @@ vacio main(){
 	x = 16;
 	y = 2;
 	imprimir("%i", raizn(16, 2));
+	devuelve 0;
 }

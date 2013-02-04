@@ -2,6 +2,7 @@
 #define INTERPRETER_H
 
 #include "platform.h"
+#include "slib.h"
 
 
 /* handy definitions */
@@ -23,20 +24,11 @@
 #define GETS_BUF_MAX 256
 
 /* small processors use a simplified FILE * for stdio, otherwise use the system FILE * */
-#ifdef BUILTIN_MINI_STDLIB
-typedef struct OutputStream IOFILE;
-#else
 typedef FILE IOFILE;
-#endif
 
 /* coercion of numeric types to other numeric types */
-#ifndef NO_FP
 #define IS_FP(v) ((v)->Typ->Base == TypeFP)
 #define FP_VAL(v) ((v)->Val->FP)
-#else
-#define IS_FP(v) 0
-#define FP_VAL(v) 0
-#endif
 
 #define IS_POINTER_COERCIBLE(v, ap) ((ap) ? ((v)->Typ->Base == TypePointer) : 0)
 #define POINTER_COERCE(v) ((int)(v)->Val->Pointer)
@@ -45,7 +37,6 @@ typedef FILE IOFILE;
 #define IS_INTEGER_NUMERIC(v) IS_INTEGER_NUMERIC_TYPE((v)->Typ)
 #define IS_NUMERIC_COERCIBLE(v) (IS_INTEGER_NUMERIC(v) || IS_FP(v))
 #define IS_NUMERIC_COERCIBLE_PLUS_POINTERS(v,ap) (IS_NUMERIC_COERCIBLE(v) || IS_POINTER_COERCIBLE(v,ap))
-
 
 struct Table;
 
@@ -127,9 +118,7 @@ enum BaseType
     TypeUnsignedInt,            /* unsigned integer */
     TypeUnsignedShort,          /* unsigned short integer */
     TypeUnsignedLong,           /* unsigned long integer */
-#ifndef NO_FP
     TypeFP,                     /* floating point */
-#endif
     TypeFunction,               /* a function */
     TypeMacro,                  /* a macro */
     TypePointer,                /* a pointer */
@@ -192,9 +181,7 @@ union AnyValue
     struct ValueType *Typ;
     struct FuncDef FuncDef;
     struct MacroDef MacroDef;
-#ifndef NO_FP
     double FP;
-#endif
     void *Pointer;                  /* unsafe native pointers */
 };
 
@@ -307,9 +294,7 @@ extern struct StackFrame *TopStackFrame;
 extern struct ValueType UberType;
 extern struct ValueType IntType;
 extern struct ValueType CharType;
-#ifndef NO_FP
 extern struct ValueType FPType;
-#endif
 extern struct ValueType VoidType;
 extern struct ValueType TypeType;
 extern struct ValueType FunctionType;
@@ -365,9 +350,7 @@ long ExpressionParseInt(struct ParseState *Parser);
 void ExpressionAssign(struct ParseState *Parser, struct Value *DestValue, struct Value *SourceValue, int Force, const char *FuncName, int ParamNo, int AllowPointerCoercion);
 long ExpressionCoerceInteger(struct Value *Val);
 unsigned long ExpressionCoerceUnsignedInteger(struct Value *Val);
-#ifndef NO_FP
 double ExpressionCoerceFP(struct Value *Val);
-#endif
 
 /* type.c */
 void TypeInit();
@@ -489,6 +472,13 @@ extern struct LibraryFunction StdCtypeFunctions[];
 
 /* custom.c */
 extern struct LibraryFunction CustomFunctions[];
+void CustomFuncSetup(void);
+
+/* gtk.c */
+extern const char GTKDefs[];
+extern struct LibraryFunction GTKFunctions[];
+void GTKFuncSetup(void);
+
 
 /* stdbool.c */
 extern const char StdboolDefs[];

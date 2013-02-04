@@ -1,8 +1,7 @@
 CC=gcc
-CFLAGS=-Wall -pedantic -g -DUNIX_HOST
-LIBS=-lm 
-
-TARGET	= cescript
+CFLAGS=-Wall -pedantic -g -DUNIX_HOST 
+LIBS=-lm -ldl
+TARGET	= picoc	
 
 #------------------- FOR WINDOWS USERS -----------------------
 # CC=gcc
@@ -11,19 +10,30 @@ TARGET	= cescript
 # TARGET= cescript.exe
 #-------------------------------------------------------------
 
-SRCS	= picoc.c table.c lex.c parse.c expression.c heap.c type.c \
+SRCS = slib.c picoc.c table.c lex.c parse.c expression.c heap.c type.c \
 	variable.c clibrary.c platform.c include.c \
 	platform/platform_unix.c platform/library_unix.c \
 	cstdlib/stdio.c cstdlib/math.c cstdlib/string.c cstdlib/stdlib.c \
 	cstdlib/time.c cstdlib/errno.c cstdlib/ctype.c cstdlib/stdbool.c \
 	cstdlib/unistd.c cstdlib/cescript.c
+
 OBJS	:= $(SRCS:%.c=%.o)
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
-	@echo "Done!:"
+	$(CC) -rdynamic $(CFLAGS) -o out/$(TARGET) $(OBJS) $(LIBS)
+	@echo "Compilacion Exitosa!"
+
+messages:
+	$(CC) -Wall -fPIC -c lang/messages.c
+	$(CC) -shared -Wl,-soname,messages.so.1 -o messages.so messages.o
+	rm messages.o
+
+tokens:
+	gcc -Wall -fPIC -c lang/tokens.c
+	gcc -shared -Wl,-soname,tokens.so.1 -o tokens.so tokens.o
+	rm tokens.o
 
 test:	all
 	(cd tests; make test)
@@ -39,7 +49,7 @@ count:
 	@cat $(SRCS) *.h */*.h | wc
 
 .PHONY: clibrary.c
-
+slib.o: slib.c slib.h
 picoc.o: picoc.c picoc.h
 table.o: table.c interpreter.h platform.h
 lex.o: lex.c interpreter.h platform.h

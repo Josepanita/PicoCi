@@ -62,17 +62,15 @@ static struct ReservedWord ReservedWords[] =
     { "if", TokenIf, NULL },
     { "ir", TokenGoto, NULL },
     { "si", TokenIf, NULL },
-#ifndef NO_FP
     { "decimal", TokenFloatType, NULL },
     { "real", TokenDoubleType, NULL },
-#endif
-    
     { "devuelve", TokenReturn, NULL },
     { "vacio", TokenVoidType, NULL },
     { "mientras", TokenWhile, NULL },
     { "cambio", TokenSwitch, NULL },
     { "para", TokenFor, NULL },
     { "estructura", TokenStructType, NULL },
+    { "nuevo_tipo", TokenTypedef, NULL },
     { "signado", TokenSignedType, NULL },
     /* END SPANISH*/
     { "int", TokenIntType, NULL },
@@ -84,10 +82,8 @@ static struct ReservedWord ReservedWords[] =
     { "default", TokenDefault, NULL },
     { "delete", TokenDelete, NULL },
     { "do", TokenDo, NULL },
-#ifndef NO_FP
     { "double", TokenDoubleType, NULL },
     { "float", TokenFloatType, NULL },
-#endif
     { "else", TokenElse, NULL },
     { "enum", TokenEnumType, NULL },
     { "extern", TokenExternType, NULL },
@@ -159,10 +155,8 @@ enum LexToken LexGetNumber(struct LexState *Lexer, struct Value *Value)
     int Result = 0;
     int Base = 10;
     enum LexToken ResultToken;
-#ifndef NO_FP
     double FPResult;
     double FPDiv;
-#endif
     
     if (*Lexer->Pos == '0')
     { 
@@ -205,7 +199,6 @@ enum LexToken LexGetNumber(struct LexState *Lexer, struct Value *Value)
         return ResultToken;
     }
         
-#ifndef NO_FP
     if (Lexer->Pos == Lexer->End || *Lexer->Pos != '.')
         return ResultToken;
 
@@ -234,9 +227,6 @@ enum LexToken LexGetNumber(struct LexState *Lexer, struct Value *Value)
     Value->Val->FP = FPResult;
     
     return TokenFPConstant;
-#else
-    return ResultToken;
-#endif
 }
 
 /* get a reserved word or identifier - used while scanning */
@@ -721,9 +711,7 @@ enum LexToken LexGetRawToken(struct ParseState *Parser, struct Value **Value, in
                 case TokenIdentifier:           LexValue.Typ = NULL; break;
                 case TokenIntegerConstant:      LexValue.Typ = &IntType; break;
                 case TokenCharacterConstant:    LexValue.Typ = &CharType; break;
-#ifndef NO_FP
                 case TokenFPConstant:           LexValue.Typ = &FPType; break;
-#endif
                 default: break;
             }
             

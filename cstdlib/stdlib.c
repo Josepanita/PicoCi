@@ -156,8 +156,8 @@ struct LibraryFunction StdlibFunctions[] =
     { StdlibLabs,           "long labs(int);" },
 /* SPANISH */
 #ifndef NO_FP
-    { StdlibAtof,           "float valor(char *);" },
-    { StdlibAtoi,           "int entero(char *);" },
+    { StdlibAtof,           "float a_flotante(char *);" },
+    { StdlibAtoi,           "int a_entero(char *);" },
 #endif
 /* SPANISH */
     { NULL,                 NULL }

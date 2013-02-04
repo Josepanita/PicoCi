@@ -105,7 +105,22 @@ struct LibraryFunction StdCtypeFunctions[] =
     { StdIsascii,      "int isascii(int);" },
     { StdToascii,      "int toascii(int);" },
 /* Spanish */
-    
+    { StdIsalnum,      "int es_alfanum(int);" },
+    { StdIsalpha,      "int es_alfa(int);" },
+    { StdIsblank,      "int es_vacio(int);" },
+    { StdIscntrl,      "int es_control(int);" },
+    { StdIsdigit,      "int es_digito(int);" },
+    { StdIsgraph,      "int es_visible(int);" },
+    { StdIslower,      "int es_minuscula(int);" },
+    { StdIsprint,      "int es_imprimible(int);" },
+    { StdIspunct,      "int es_punctuacion(int);" },
+    { StdIsspace,      "int es_espacio(int);" },
+    { StdIsupper,      "int es_mayuscula(int);" },
+    { StdIsxdigit,     "int es_hex(int);" },
+    { StdTolower,      "int minusculas(int);" },
+    { StdToupper,      "int mayusculas(int);" },
+    { StdIsascii,      "int es_ascii(int);" },
+    { StdToascii,      "int ascii(int);" },
 /* Spanish */
     { NULL,             NULL }
 };

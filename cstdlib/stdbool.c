@@ -8,7 +8,7 @@ static int falseValue = 0;
 
 
 /* structure definitions */
-const char StdboolDefs[] = "typedef int bool;";
+const char StdboolDefs[] = "typedef unsigned char bool;";
 
 /* creates various system-dependent definitions */
 void StdboolSetupFunc(void)

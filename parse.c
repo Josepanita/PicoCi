@@ -326,7 +326,7 @@ void ParseMacroDefinition(struct ParseState *Parser)
         }
         
         if (Token != TokenCloseBracket)
-            ProgramFail(Parser, "esperaba cierre de corchetes");
+            ProgramFail(Parser, "esperaba '}'");
     }
     else
     {
@@ -747,7 +747,7 @@ enum ParseResult ParseStatement(struct ParseState *Parser, int CheckTrailingSemi
                 else
                 {
                     if (ExpressionParse(Parser, &CValue))
-                        ProgramFail(Parser, "valor devuelto en una funcion de tipo vacia");                    
+                        ProgramFail(Parser, "valor devuelto en una funcion de tipo vacia");
                 }
                 
                 Parser->Mode = RunModeReturn;
@@ -866,7 +866,7 @@ void PicocParseInteractive()
     } while (Ok == ParseResultOk);
     
     if (Ok == ParseResultError)
-        ProgramFail(&Parser, "error de lectura");
+        ProgramFail(&Parser, "Error de syntax");
     
     PlatformPrintf("\n");
 }

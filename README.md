@@ -22,7 +22,6 @@ Es un interprete de lenguage C, soporta casi todas las funciones de lenguaje C (
 
 * Galeria de [Tests] con muestras de las capacidades del interprete, y de su sintaxis.
 
-
 ## Compilando CEscript
 
 CEscript puede ser compilado desde una plataforma UNIX/Linux/POSIX usando `make`.

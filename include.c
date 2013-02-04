@@ -15,11 +15,10 @@ struct IncludeLibrary
 
 struct IncludeLibrary *IncludeLibList = NULL;
 
-
 /* initialise the built-in include libraries */
 void IncludeInit()
 {
-#ifndef BUILTIN_MINI_STDLIB
+
     IncludeRegister("ctype.h", NULL, &StdCtypeFunctions[0], NULL);
     IncludeRegister("errno.h", &StdErrnoSetupFunc, NULL, NULL);
 #ifndef NO_FP
@@ -33,9 +32,9 @@ void IncludeInit()
     #ifndef WINDOWS_HOST
     IncludeRegister("unistd.h", &UnistdSetupFunc, &UnistdFunctions[0], UnistdDefs);
     #endif
-
-    IncludeRegister("cstdlib/cescript.h", NULL, &CustomFunctions[0], NULL);
-#endif
+    #ifndef NO_CESCRIPT
+    IncludeRegister("cescript.h", &CustomFuncSetup, &CustomFunctions[0], NULL);
+    #endif /* !NO_CESCRIPT */
 }
 
 /* clean up space used by the include system */

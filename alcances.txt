@@ -1,0 +1,12 @@
+Soporte para tipos de datos nativos.
+Entrada y Salida de Datos.
+Operadores (Lógicos, Aritméticos y de Comparación).
+Bucles.
+Condicionales.
+Estructuras.
+Punteros.
+Aritmética de Punteros.
+Funciones.
+Archivos.
+Vectores o Arreglos.
+Directivas de Preprocesador.

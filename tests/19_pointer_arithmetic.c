@@ -6,6 +6,7 @@ int *c;
 
 a = 42;
 b = &a;
+b = &a;
 c = NULL;
 
 printf("%d\n", *b);

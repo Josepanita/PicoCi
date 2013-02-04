@@ -1,0 +1,55 @@
+#incluye <stdio.h>
+#incluye <cescript.h>
+
+entero main(){
+	entero y, z;
+	float w, x;
+	char *str, *a, *b, *c;
+
+	imprimir("::Test Libreria CEscript.h::\n");
+
+	// aleatorio();
+
+	w = aleatorio(10); // devuelve un numero del 0.0000 al 0.9999
+	x = (w*10)+1; 
+
+	imprimir("Un Numero Aleatorio: %d \n", x);
+
+	// subcadena( cadena, inicio, longitud ) | derecha( cadena, longitud ) | izquierda( cadena, longitud )
+
+	str = "--Hola!!";
+
+	a = subcadena(str, 1,6);
+	b = izquierda(a,1);
+	c = derecha(b,4);
+	
+	imprimir("subcadena(\"%s\", %d,%d) = %s\n", str, 2, 5, a);
+	imprimir("derecha(\"%s\", %d) = %s\n", a, 1, b);
+	imprimir("izquierda(\"%s\", %d) = %s\n", b, 4, c);
+
+	// pausar() - getch();
+	imprimir("Pausando la ejecucion...\n");
+	pausar();
+	imprimir("Continuando la ejecucion...\n");
+	
+	// raizn( indice, cantidad_sub_radical ); 
+
+	w = raizn(2, 4);
+	x = raizn(2, w);
+
+	imprimir("Raiz de 4: %.2f \n", w);
+	imprimir("Raiz de %.2f: %.2f \n", w, x);
+
+	y = signo(x*-1);
+	imprimir("signo(%d) = %d\n", x, y);	
+	
+	if(y == -1){
+		imprimir("%d es negativo\n", y);
+	}else if(y == 1){
+		imprimir("%d es positivo\n", y);
+	}else{
+		imprimir("%d es cero\n", y);
+	}
+
+	return 0;
+}

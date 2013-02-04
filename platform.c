@@ -4,9 +4,13 @@
 /* the value passed to exit() */
 int PicocExitValue = 0;
 
+SLib* dllLoader = NULL;
+char* (*getError)(char *);
 /* initialise everything */
 void PicocInitialise(int StackSize)
 {
+    dllLoader = sl_open("./messages.so", 1);
+    getError = sl_symbol(dllLoader, "getErrorMessage");
     BasicIOInit();
     HeapInit(StackSize);
     TableInit();
@@ -17,10 +21,6 @@ void PicocInitialise(int StackSize)
     IncludeInit();
 #endif
     LibraryInit();
-#ifdef BUILTIN_MINI_STDLIB
-    LibraryAdd(&GlobalTable, "c library", &CLibrary[0]);
-    CLibraryInit();
-#endif
     PlatformLibraryInit();
 }
 
@@ -37,11 +37,10 @@ void PicocCleanup()
     TypeCleanup();
     TableStrFree();
     HeapCleanup();
+    sl_close(dllLoader);
 }
 
 /* platform-dependent code for running programs */
-#if defined(UNIX_HOST) || defined(WINDOWS_HOST)
-
 #define CALL_MAIN_NO_ARGS_RETURN_VOID "main();"
 #define CALL_MAIN_WITH_ARGS_RETURN_VOID "main(__argc,__argv);"
 #define CALL_MAIN_NO_ARGS_RETURN_INT "__exit_value = main();"
@@ -53,11 +52,11 @@ void PicocCallMain(int argc, char **argv)
     struct Value *FuncValue = NULL;
 
     if (!VariableDefined(TableStrRegister("main")))
-        ProgramFail(NULL, "main() no esta definido");
+        ProgramFail(NULL, (*getError)("not_defined_err"), "main()");
         
     VariableGet(NULL, TableStrRegister("main"), &FuncValue);
     if (FuncValue->Typ->Base != TypeFunction)
-        ProgramFail(NULL, "main no es una funcion - no puedo llamarla");
+        ProgramFail(NULL, (*getError)("not_a_func_err"), "main()");
 
     if (FuncValue->Val->FuncDef.NumParams != 0)
     {
@@ -83,7 +82,6 @@ void PicocCallMain(int argc, char **argv)
             PicocParse("startup", CALL_MAIN_WITH_ARGS_RETURN_INT, strlen(CALL_MAIN_WITH_ARGS_RETURN_INT), TRUE, TRUE, FALSE);
     }
 }
-#endif
 
 void PrintSourceTextErrorLine(const char *FileName, const char *SourceText, int Line, int CharacterPos)
 {
@@ -149,7 +147,7 @@ void ProgramFail(struct ParseState *Parser, const char *Message, ...)
 void AssignFail(struct ParseState *Parser, const char *Format, struct ValueType *Type1, struct ValueType *Type2, int Num1, int Num2, const char *FuncName, int ParamNo)
 {
     PlatformErrorPrefix(Parser);
-    PlatformPrintf("no puedo %s ", (FuncName == NULL) ? "asignar" : "fijar");   
+    PlatformPrintf((*getError)("func_err"), (FuncName == NULL) ? (*getError)("assign") : (*getError)("fix"));
         
     if (Type1 != NULL)
         PlatformPrintf(Format, Type1, Type2);
@@ -157,7 +155,7 @@ void AssignFail(struct ParseState *Parser, const char *Format, struct ValueType 
         PlatformPrintf(Format, Num1, Num2);
     
     if (FuncName != NULL)
-        PlatformPrintf(" in argument %d of call to %s()", ParamNo, FuncName);
+        PlatformPrintf((*getError)("arg_bad_call"), ParamNo, FuncName);
         
     ProgramFail(NULL, "");
 }

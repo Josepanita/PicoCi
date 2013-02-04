@@ -2,8 +2,6 @@
 #include "picoc.h"
 
 /* platform-dependent code for running programs is in this file */
-
-#if defined(UNIX_HOST) || defined(WINDOWS_HOST)
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -18,9 +16,9 @@ int main(int argc, char **argv)
     
     if (argc < 2)
     {
-        printf("Format: picoc <csource1.c>... [- <arg1>...]    : corre un programa (llama a main() para iniciar )\n"
-               "        picoc -s <csource1.c>... [- <arg1>...] : modo script - corre un programa sin llamar a main()\n"
-               "        picoc -i                               : modo interactivo\n");
+        printf("Formato: picoc <csource1.c>... [<archivos>...]    : corre un programa (llama a main() para iniciar )\n"
+               "         picoc -s <csource1.c>... [<archivos>...] : modo script - corre un programa sin llamar a main()\n"
+               "         picoc -i                               : modo interactivo\n");
         exit(1);
     }
     
@@ -56,46 +54,3 @@ int main(int argc, char **argv)
     PicocCleanup();
     return PicocExitValue;
 }
-#else
-# ifdef SURVEYOR_HOST
-#  define HEAP_SIZE C_HEAPSIZE
-#  include <setjmp.h>
-#  include "../srv.h"
-#  include "../print.h"
-#  include "../string.h"
-
-int picoc(char *SourceStr)
-{   
-    char *pos;
-
-    PicocInitialise(HEAP_SIZE);
-
-    if (SourceStr)
-    {
-        for (pos = SourceStr; *pos != 0; pos++)
-        {
-            if (*pos == 0x1a)
-            {
-                *pos = 0x20;
-            }
-        }
-    }
-
-    PicocExitBuf[40] = 0;
-    setjmp(PicocExitBuf);
-    if (PicocExitBuf[40]) {
-        printf("Saliendo de PicoC\n\r");
-        PicocCleanup();
-        return PicocExitValue;
-    }
-
-    if (SourceStr)   
-        PicocParse("nofile", SourceStr, strlen(SourceStr), TRUE, TRUE, FALSE);
-
-    PicocParseInteractive();
-    PicocCleanup();
-    
-    return PicocExitValue;
-}
-# endif
-#endif

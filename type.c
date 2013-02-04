@@ -9,9 +9,7 @@ struct ValueType LongType;
 struct ValueType UnsignedIntType;
 struct ValueType UnsignedShortType;
 struct ValueType UnsignedLongType;
-#ifndef NO_FP
 struct ValueType FPType;
-#endif
 struct ValueType VoidType;
 struct ValueType TypeType;
 struct ValueType FunctionType;
@@ -129,9 +127,7 @@ void TypeInit()
     struct ShortAlign { char x; short y; } sa;
     struct CharAlign { char x; char y; } ca;
     struct LongAlign { char x; long y; } la;
-#ifndef NO_FP
     struct DoubleAlign { char x; double y; } da;
-#endif
     struct PointerAlign { char x; void *y; } pa;
     
     IntAlignBytes = (char *)&ia.y - &ia.x;
@@ -149,12 +145,8 @@ void TypeInit()
     TypeAddBaseType(&FunctionType, TypeFunction, sizeof(int), IntAlignBytes);
     TypeAddBaseType(&MacroType, TypeMacro, sizeof(int), IntAlignBytes);
     TypeAddBaseType(&GotoLabelType, TypeGotoLabel, 0, 1);
-#ifndef NO_FP
     TypeAddBaseType(&FPType, TypeFP, sizeof(double), (char *)&da.y - &da.x);
     TypeAddBaseType(&TypeType, Type_Type, sizeof(double), (char *)&da.y - &da.x);  /* must be large enough to cast to a double */
-#else
-    TypeAddBaseType(&TypeType, Type_Type, sizeof(struct ValueType *), PointerAlignBytes);
-#endif
     CharArrayType = TypeAdd(NULL, &CharType, TypeArray, 0, StrEmpty, sizeof(char), (char *)&ca.y - &ca.x);
     CharPtrType = TypeAdd(NULL, &CharType, TypePointer, 0, StrEmpty, sizeof(void *), PointerAlignBytes);
     CharPtrPtrType = TypeAdd(NULL, CharPtrType, TypePointer, 0, StrEmpty, sizeof(void *), PointerAlignBytes);
@@ -410,9 +402,7 @@ int TypeParseFront(struct ParseState *Parser, struct ValueType **Typ, int *IsSta
         case TokenShortType: *Typ = Unsigned ? &UnsignedShortType : &ShortType; break;
         case TokenCharType: *Typ = &CharType; break;
         case TokenLongType: *Typ = Unsigned ? &UnsignedLongType : &LongType; break;
-#ifndef NO_FP
         case TokenFloatType: case TokenDoubleType: *Typ = &FPType; break;
-#endif
         case TokenVoidType: *Typ = &VoidType; break;
         
         case TokenStructType: case TokenUnionType: 
