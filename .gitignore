@@ -35,26 +35,12 @@ Ankh.NoLoad
 *.pidb
 *.userprefs
 
-#Tooling
-_ReSharper*/
-*.resharper
-[Tt]est[Rr]esult*
-
 #Project files
 [Bb]uild/
-
-#Subversion files
-.svn
 
 # Office Temp Files
 ~$*
 
-#NuGet
-packages/
-
-#ncrunch
-*ncrunch*
-*crunch*.local.xml
 
 *.dsc
 *.o
