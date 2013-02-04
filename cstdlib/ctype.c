@@ -105,6 +105,7 @@ struct LibraryFunction StdCtypeFunctions[] =
     { StdIsascii,      "int isascii(int);" },
     { StdToascii,      "int toascii(int);" },
 /* Spanish */
+<<<<<<< HEAD
     { StdIsalnum,      "int es_alfanum(int);" },
     { StdIsalpha,      "int es_alfa(int);" },
     { StdIsblank,      "int es_vacio(int);" },
@@ -121,6 +122,9 @@ struct LibraryFunction StdCtypeFunctions[] =
     { StdToupper,      "int mayusculas(int);" },
     { StdIsascii,      "int es_ascii(int);" },
     { StdToascii,      "int ascii(int);" },
+=======
+    
+>>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
 /* Spanish */
     { NULL,             NULL }
 };

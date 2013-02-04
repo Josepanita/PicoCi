@@ -11,6 +11,7 @@ float b = 6.321;
 
 printf("A Floating Point: %f\n", b);
 
+<<<<<<< HEAD
 char c = 'A', 
 	 d[5] = {'H', 'e', 'l','l','o'}, 
 	 *e = "World";
@@ -36,6 +37,9 @@ mi_cedula.apellido = "Gomez Rodriguez";
 
 void print_id(id cedula){
 	printf("%c-%d %s %s", cedula.tipo_cedula, cedula.cedula, cedula.nombre, cedula.apellido);
+=======
+void main() {
+>>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
 }
 printf("A Struct: ");
 print_id(mi_cedula);

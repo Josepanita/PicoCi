@@ -3,6 +3,7 @@ CFLAGS=-Wall -pedantic -g -DUNIX_HOST
 LIBS=-lm -ldl
 TARGET	= picoc	
 
+<<<<<<< HEAD
 #------------------- FOR WINDOWS USERS -----------------------
 # CC=gcc
 # CFLAGS=-Wall -pedantic -g -DWINDOWS_HOST
@@ -11,6 +12,11 @@ TARGET	= picoc
 #-------------------------------------------------------------
 
 SRCS = slib.c picoc.c table.c lex.c parse.c expression.c heap.c type.c \
+=======
+TARGET	= cescript
+
+SRCS	= picoc.c table.c lex.c parse.c expression.c heap.c type.c \
+>>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
 	variable.c clibrary.c platform.c include.c \
 	platform/platform_unix.c platform/library_unix.c \
 	cstdlib/stdio.c cstdlib/math.c cstdlib/string.c cstdlib/stdlib.c \

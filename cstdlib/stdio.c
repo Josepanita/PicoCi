@@ -509,6 +509,13 @@ void StdioGets(struct ParseState *Parser, struct Value *ReturnValue, struct Valu
     }
 }
 
+void StdioGetch(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
+{
+    fprintf(stdout, "Presione una tecla para continuar...");
+    ReturnValue->Val->Integer = getchar();
+
+}
+
 void StdioGetchar(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs) 
 {
     ReturnValue->Val->Integer = getchar();
@@ -617,11 +624,14 @@ void StdioVsscanf(struct ParseState *Parser, struct Value *ReturnValue, struct V
 {
     ReturnValue->Val->Integer = StdioBaseScanf(Parser, NULL, Param[0]->Val->Pointer, Param[1]->Val->Pointer, Param[2]->Val->Pointer);
     ClearBuffer();
+<<<<<<< HEAD
 }
 
 void StdioClearBuffer(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ClearBuffer();
+=======
+>>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
 }
 
 /* handy structure definitions */
@@ -681,15 +691,25 @@ struct LibraryFunction StdioFunctions[] =
     { StdioVsnprintf,"int vsnprintf(char *, int, char *, va_list);" },
     { StdioVscanf,   "int vscanf(char *, va_list);" },
     { StdioVfscanf,  "int vfscanf(FILE *, char *, va_list);" },
+<<<<<<< HEAD
     { StdioClearBuffer,  "int clear_buffer();" },
 
 /* Spanish */
+=======
+    { StdioVsscanf,  "int vsscanf(char *, char *, va_list);" },
+/* Spanish */
+    /* Getch */
+    { StdioGetch,   "int pausar();" },
+>>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
     /* Imprimir*/
     { StdioPrintf,  "int imprimir(char *, ...);" },
     /* Leer */
     { StdioScanf,   "int leer(char *, ...);" },
+<<<<<<< HEAD
     /* Limpiar Buffer de lectura*/
     { StdioClearBuffer,  "int limpiar_buffer();" },
+=======
+>>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
 /* Spanish */
     { NULL,         NULL }
 };
