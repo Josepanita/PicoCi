@@ -44,46 +44,6 @@ static struct ReservedWord ReservedWords[] =
     { "#ifdef", TokenHashIfdef, NULL },
     { "#ifndef", TokenHashIfndef, NULL },
     { "#include", TokenHashInclude, NULL },
-    /*SPANISH*/
-    { "#sino", TokenHashElse, NULL },
-    { "#finsi", TokenHashEndif, NULL },
-    { "#si", TokenHashIf, NULL },
-    { "#sidef", TokenHashIfdef, NULL },
-    { "#sinodef", TokenHashIfndef, NULL },
-    { "#incluye", TokenHashInclude, NULL },
-    { "terminar", TokenBreak, NULL },
-    { "caso", TokenCase, NULL },
-    { "caracter", TokenCharType, NULL },
-    { "continuar", TokenContinue, NULL },
-    { "omision", TokenDefault, NULL },
-    { "hacer", TokenDo, NULL },
-    { "entero", TokenIntType, NULL },
-    { "sino", TokenElse, NULL },
-    { "if", TokenIf, NULL },
-    { "ir", TokenGoto, NULL },
-    { "si", TokenIf, NULL },
-<<<<<<< HEAD
-    { "decimal", TokenFloatType, NULL },
-    { "real", TokenDoubleType, NULL },
-=======
-#ifndef NO_FP
-    { "decimal", TokenFloatType, NULL },
-    { "real", TokenDoubleType, NULL },
-#endif
-    
->>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
-    { "devuelve", TokenReturn, NULL },
-    { "vacio", TokenVoidType, NULL },
-    { "mientras", TokenWhile, NULL },
-    { "cambio", TokenSwitch, NULL },
-    { "para", TokenFor, NULL },
-    { "estructura", TokenStructType, NULL },
-<<<<<<< HEAD
-    { "nuevo_tipo", TokenTypedef, NULL },
-    { "signado", TokenSignedType, NULL },
-=======
->>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
-    /* END SPANISH*/
     { "int", TokenIntType, NULL },
     { "auto", TokenAutoType, NULL },
     { "break", TokenBreak, NULL },

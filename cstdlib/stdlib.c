@@ -148,21 +148,18 @@ struct LibraryFunction StdlibFunctions[] =
     { StdlibExit,           "void exit(int);" },
     { StdlibGetenv,         "char *getenv(char *);" },
     { StdlibSystem,         "int system(char *);" },
-<<<<<<< HEAD
 /*  { StdlibBsearch,        "void *bsearch(void *,void *,int,int,int (*)());" }, 
     { StdlibQsort,          "void *qsort(void *,int,int,int (*)());" }, 
-=======
-/*    { StdlibBsearch,        "void *bsearch(void *,void *,int,int,int (*)());" }, */
-/*    { StdlibQsort,          "void *qsort(void *,int,int,int (*)());" }, */
+    { StdlibBsearch,        "void *bsearch(void *,void *,int,int,int (*)());" }, 
+    { StdlibQsort,          "void *qsort(void *,int,int,int (*)());" }, */
     { StdlibAbs,            "int abs(int);" },
     { StdlibLabs,           "long labs(int);" },
 #if 0
->>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
     { StdlibDiv,            "div_t div(int);" },
-    { StdlibLdiv,           "ldiv_t ldiv(int);" }, */
+    { StdlibLdiv,           "ldiv_t ldiv(int);" }, 
     { StdlibAbs,            "int abs(int);" },
     { StdlibLabs,           "long labs(int);" },
-/* SPANISH */
+#endif
 #ifndef NO_FP
     { StdlibAtof,           "float a_flotante(char *);" },
     { StdlibAtoi,           "int a_entero(char *);" },

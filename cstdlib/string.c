@@ -120,7 +120,7 @@ void StringStrdup(struct ParseState *Parser, struct Value *ReturnValue, struct V
     ReturnValue->Val->Pointer = strdup(Param[0]->Val->Pointer);
 }
 
-#ifndef WINDOWS_HOST
+#ifndef WIN32
 
 void StringStrtok_r(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
@@ -165,7 +165,7 @@ struct LibraryFunction StringFunctions[] =
     { StringStrtok,        "char *strtok(char *,char *);" },
     { StringStrxfrm,       "int strxfrm(char *,char *,int);" },
     { StringStrdup,        "char *strdup(char *);" },
-    #ifndef WINDOWS_HOST
+    #ifndef WIN32
     { StringIndex,         "char *index(char *,int);" },
     { StringRindex,        "char *rindex(char *,int);" },
     { StringStrtok_r,      "char *strtok_r(char *,char *,char **);" },

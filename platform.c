@@ -9,7 +9,7 @@ char* (*getError)(char *);
 /* initialise everything */
 void PicocInitialise(int StackSize)
 {
-    dllLoader = sl_open("./messages.so", 1);
+    dllLoader = sl_open("../lib/messages.so", 1);
     getError = sl_symbol(dllLoader, "getErrorMessage");
     BasicIOInit();
     HeapInit(StackSize);

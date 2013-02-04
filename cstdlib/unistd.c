@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include "../interpreter.h"
-
+#ifndef WIN32
 #ifndef BUILTIN_MINI_STDLIB
 
 static int ZeroValue = 0;
@@ -497,3 +497,4 @@ void UnistdSetupFunc(void)
 
 #endif /* !BUILTIN_MINI_STDLIB */
 
+#endif

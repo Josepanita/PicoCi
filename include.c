@@ -29,7 +29,7 @@ void IncludeInit()
     IncludeRegister("stdlib.h", &StdlibSetupFunc, &StdlibFunctions[0], NULL);
     IncludeRegister("string.h", &StringSetupFunc, &StringFunctions[0], NULL);
     IncludeRegister("time.h", &StdTimeSetupFunc, &StdTimeFunctions[0], StdTimeDefs);
-    #ifndef WINDOWS_HOST
+    #ifndef WIN32
     IncludeRegister("unistd.h", &UnistdSetupFunc, &UnistdFunctions[0], UnistdDefs);
     #endif
     #ifndef NO_CESCRIPT

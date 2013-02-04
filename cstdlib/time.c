@@ -61,7 +61,7 @@ void StdStrftime(struct ParseState *Parser, struct Value *ReturnValue, struct Va
     ReturnValue->Val->Integer = strftime(Param[0]->Val->Pointer, Param[1]->Val->Integer, Param[2]->Val->Pointer, Param[3]->Val->Pointer);
 }
 
-#ifndef WINDOWS_HOST
+#ifndef WIN32
 void StdGmtime_r(struct ParseState *Parser, struct Value *ReturnValue, struct Value **Param, int NumArgs)
 {
     ReturnValue->Val->Pointer = gmtime_r(Param[0]->Val->Pointer, Param[1]->Val->Pointer);
@@ -101,14 +101,11 @@ struct LibraryFunction StdTimeFunctions[] =
     { StdMktime,        "int mktime(struct tm *ptm);" },
     { StdTime,          "int time(int *);" },
     { StdStrftime,      "int strftime(char *, int, char *, struct tm *);" },
-#ifndef WINDOWS_HOST
+#ifndef WIN32
     { StdTimegm,        "int timegm(struct tm *);" },
-<<<<<<< HEAD
     { StdStrptime,      "char *strptime(char *, char *, struct tm *);" },
     { StdGmtime_r,      "struct tm *gmtime_r(int *, struct tm *);" },
 #endif
-=======
->>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
     /*Spanish */
     { StdTime,          "int tiempo(int *);" },
     { NULL,             NULL }

@@ -4,7 +4,6 @@
 #include "platform.h"
 #include "slib.h"
 
-
 /* handy definitions */
 #ifndef TRUE
 #define TRUE 1

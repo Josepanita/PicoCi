@@ -2,11 +2,8 @@
 #define PICOC_H
 
 /* picoc version number */
-<<<<<<< HEAD
+
 #define PICOC_VERSION "v2.2"
-=======
-#define PICOC_VERSION "v1.1"
->>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
 
 /* handy definitions */
 #ifndef TRUE

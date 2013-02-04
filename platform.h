@@ -14,15 +14,9 @@
 #define LOCAL_TABLE_SIZE 11                 /* size of local variable table (can expand) */
 #define STRUCT_TABLE_SIZE 11                /* size of struct/union member table (can expand) */
 
-<<<<<<< HEAD
 #define INTERACTIVE_PROMPT_START "iniciando picoc " PICOC_VERSION " modo interactivo\n"
 #define INTERACTIVE_PROMPT_STATEMENT "picoc> "
 #define INTERACTIVE_PROMPT_LINE "     > "
-=======
-#define INTERACTIVE_PROMPT_START "Iniciando CEscript " PICOC_VERSION "\n"
-#define INTERACTIVE_PROMPT_STATEMENT "cescript > "
-#define INTERACTIVE_PROMPT_LINE "	> "
->>>>>>> 497ccae6e27d3d9d1167a20db59d12a61eaaa022
 
 /* host platform includes */
 #define USE_MALLOC_STACK                   /* stack is allocated using malloc() */

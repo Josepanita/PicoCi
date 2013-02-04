@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall -pedantic -g -DUNIX_HOST 
-LIBS=-lm -ldl
+LIBS=-lm -L./lib
 TARGET	= picoc	
 
 #------------------- FOR WINDOWS USERS -----------------------
@@ -10,7 +10,7 @@ TARGET	= picoc
 # TARGET= cescript.exe
 #-------------------------------------------------------------
 
-SRCS	= picoc.c table.c lex.c parse.c expression.c heap.c type.c \
+SRCS	= slib.c picoc.c table.c lex.c parse.c expression.c heap.c type.c \
 	variable.c clibrary.c platform.c include.c \
 	platform/platform_unix.c platform/library_unix.c \
 	cstdlib/stdio.c cstdlib/math.c cstdlib/string.c cstdlib/stdlib.c \
@@ -22,7 +22,7 @@ OBJS	:= $(SRCS:%.c=%.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) -rdynamic $(CFLAGS) -o out/$(TARGET) $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) -o out/$(TARGET) $(OBJS) $(LIBS)
 	@echo "Compilacion Exitosa!"
 
 messages:
